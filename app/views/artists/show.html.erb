@@ -1,1 +1,6 @@
 <h1><%= @artist.name %></h1>
+
+<hr>
+
+<%= link_to "[Edit]", edit_artist_path(@artist.id) %>
+<%= link_to "[Delete]", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
