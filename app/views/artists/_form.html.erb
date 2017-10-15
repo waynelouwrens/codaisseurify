@@ -2,9 +2,23 @@
 
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <%= form_for @artist, html: { multipart: true } do |f| %>
 
+  <label>Photos</label>
+
+<div class="form-group">
+  <span class="btn btn-default">
+    Upload Photos
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  </span>
+</div>
+
+<div id="photos">
+  <%= render 'photos/list' %>
+</div>
 
 <br>
   <%= f.submit (@artist.new_record? ? "Create" : "Update") %>
 
+<% end %>
 <% end %>
