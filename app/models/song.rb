@@ -3,6 +3,6 @@ class Song < ApplicationRecord
 
   validates :name, presence: true
   validates :album, presence: true
-  validates :year, presence: true
+  validates :year, presence: true, length: { maximum:4 }
 
 end
