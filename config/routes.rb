@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :artists
   resources :songs
+  resources :photos
 
 #  get "artists" => "artists#index"
 #  get "artists/new" => "artists#new", as: :new_artist

@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
     @photos = @artist.photos
+    @songs = @artist.songs
   end
 
   def new
@@ -31,6 +32,7 @@ class ArtistsController < ApplicationController
   def edit
     @artist = Artist.find(params[:id])
     @photos = @artist.photos
+    @songs = @artist.songs
   end
 
   def update
@@ -58,7 +60,7 @@ class ArtistsController < ApplicationController
 private
 
   def artist_params
-    params.require(:artist).permit(:name, :image_url)
+    params.require(:artist).permit(:name, photo_ids:[])
   end
 
   def image_params
