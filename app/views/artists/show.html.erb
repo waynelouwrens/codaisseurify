@@ -5,7 +5,7 @@
   <% if @artist.songs.any? %>
     <ul>
       <% @artist.songs.each do |song| %>
-        <li><%= link_to song.name, song_path(song.id) %></li>
+        <li><%=song.name%></li>
           <% end %>
     </ul>
   <% else %>
@@ -24,6 +24,6 @@
 
 <hr>
 
-<%= link_to "Add a new song", new_song_path, class: "btn btn-primary" %>
+<%= link_to "Add a new song", new_artist_song_path(@artist), class: "btn btn-primary" %>
 <%= link_to "[Edit]", edit_artist_path(@artist.id), class: "btn btn-primary" %>
 <%= link_to "[Delete]", artist_path(@artist.id), class: "btn btn-primary",method: :delete, data: { confirm: "Are you sure?" } %>

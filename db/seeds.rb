@@ -3,14 +3,11 @@ Song.destroy_all
 Artist.destroy_all
 
 
-
-
 # ARTISTS
 kelly_clarkson = Artist.create!({ name: "Kelly Clarkson"})
 lionel_richie = Artist.create!({ name: "Lionel Richie"})
 celine_dion = Artist.create!({ name: "Celine Dion"})
 michael_buble = Artist.create!({ name: "Michael Buble"})
-
 
 # SONGS
 
