@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   resources :photos
 
+  namespace :api do
+    resources :artists
+  end
+
+end
+
 #  get "artists" => "artists#index"
 #  get "artists/new" => "artists#new", as: :new_artist
 #  get "artists/:id" => "artists#show", as: :artist
@@ -16,5 +22,3 @@ Rails.application.routes.draw do
 
 #  patch "artists/:id" => "artists#update"
 #  delete "artists/:id" => "artists#destroy"
-
-end
