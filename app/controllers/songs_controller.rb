@@ -34,7 +34,12 @@ def create
     end
 end
 
-
+  def update
+    song_params = params.require(:song).permit(:name, :year, :album, :artist_id)
+    @song = Song.find(params[:id])
+    @song.update_attributes(song_params)
+    redirect_to artist_song_path(@song), notice: "Song Updated"
+  end
 
 def destroy
     @artist = Artist.find(params[:artist_id])

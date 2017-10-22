@@ -14,16 +14,16 @@ class Api::SongsController < Application Controller
   end
 
   def destroy
-    artist = Artist.find(params[:id])
-    artist.destroy
+    song = Song.find(params[:id])
+    song.destroy
 
     render status: 200, json: {
-      message: "Artist deleted"
+      message: "Song deleted",
     }.to_json
   end
 
   def update
-    artist = Artist.find(params[:id])
+    song = Song.find(params[:id])
     if song.update(song_params)
       render status: 200, json: song
     else
