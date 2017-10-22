@@ -1,11 +1,14 @@
-class Api::SongsController < Application Controller
+class Api::SongsController < ApplicationController
+
+     skip_before_action :verify_authenticity_token
 
   def create
+    song_params = params.require(:song).permit(:name, :year, :album, :artist_id)
     @artist = Artist.find(params[:artist_id])
     @song = @artist.songs.new(song_params)
 
-    if song.save
-      render status: 201, json: song
+    if @song.save
+      render status: 201, json: @song
     else
       render status: 422, json: {
         errors: artist.errors
