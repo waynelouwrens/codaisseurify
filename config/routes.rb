@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-  root "artists#index"
+    root "artists#index"
 
-  resources :artists do
-    resources :songs
+    resources :artists do
+      resources :songs
+    end
+
+    resources :photos
+
+    namespace :api do
+      resources :artists do
+        resources :songs, only: [:create, :update, :destroy]
+    end
   end
-
-  resources :photos
-
-  namespace :api do
-    resources :artists
-  end
-
 end
 
 #  get "artists" => "artists#index"
