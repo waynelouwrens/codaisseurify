@@ -31,6 +31,30 @@ class Api::ArtistsController < ApplicationController
     end
   end
 
+  def destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
+
+    render status: 200, json: {
+      message: "Artist deleted"
+    }.to_json
+  end
+
+  def update
+    artist = Artist.find(params[:id])
+    if artist.update(artist_params)
+      render status: 200, json: {
+        message: "Artist Updated",
+        aritst: artist
+      }.to_json
+    else
+      render status: 422, json: {
+        message: "Artist could not be updated",
+        errors:artist.errors
+      }.to_json
+    end
+  end
+
     private
     def artist_params
       params.require(:artist).permit(:name)
