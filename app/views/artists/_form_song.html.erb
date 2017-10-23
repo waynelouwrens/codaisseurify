@@ -1,0 +1,22 @@
+
+<%= form_for [@artist, @song] do |f| %>
+  <div class="form-group">
+
+      <%= f.text_field :name, placeholder: "Song name", class: "form-control" %>
+      <br>
+      <%= f.text_field :album, placeholder: "Album name", class: "form-control" %>
+      <br>
+      <%= f.text_field :year, placeholder: "What year was it released?", class: "form-control" %>
+      <br>
+      <%= f.label :artist_id %>
+
+    <br>
+      <%= f.collection_select :artist_id, Artist.all, :id, :name %>
+    <br>
+
+  <div class="actions">
+    <br>
+      <%= f.submit (@song.new_record? ? "Add Song" : "Update") %>
+    <br>
+  </div>
+<% end %>
