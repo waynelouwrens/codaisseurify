@@ -2,15 +2,12 @@
 
 <h4> List of Songs </h4>
 
-  <% if @artist.songs.any? %>
     <ul>
       <% @artist.songs.each do |song| %>
-        <li><%=link_to song.name, artist_song_path(@artist)%></li>
-          <% end %>
+        <li> <%= song.name %> </li>
+      <% end %>
     </ul>
-  <% else %>
-  <p>This Artist has not been singing!</p>
-<% end %>
+
 
 <!-- Photos -->
 <h4>Photos</h4>
@@ -24,6 +21,10 @@
 
 <hr>
 
-<%= link_to "Add a new song", new_artist_song_path(@artist), class: "btn btn-primary" %>
+<h3>Add New Song to <%= "#{@artist.name}" %> </h3>
+  <br>
+    <%= render "form_song" %>
+  <br>
+
 <%= link_to "[Edit]", edit_artist_path(@artist.id), class: "btn btn-primary" %>
 <%= link_to "[Delete]", artist_path(@artist.id), class: "btn btn-primary",method: :delete, data: { confirm: "Are you sure?" } %>
