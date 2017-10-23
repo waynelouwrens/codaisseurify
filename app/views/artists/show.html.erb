@@ -1,16 +1,16 @@
 <h1><%= @artist.name %></h1>
-
+    <br>
 <h4> List of Songs </h4>
-
+    <br>
     <ul>
       <% @artist.songs.each do |song| %>
-        <li> <%= song.name %> </li>
+        <li> <p><b>Song Title:</b> <%= song.name %></p><p><b>Album:</b> <%= song.album %></p> <p><b>Released In:</b> <%= song.year %></p> <hr> </li>
       <% end %>
     </ul>
 
 
 <!-- Photos -->
-<h4>Photos</h4>
+<h3><strong>Photos</strong></h3>
 <% @artist.photos.each do |photo| %>
 <div class="panel panel-default">
   <div class="panel-heading">
