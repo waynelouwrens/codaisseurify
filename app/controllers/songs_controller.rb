@@ -28,9 +28,9 @@ def create
     #@song = Song.new(song_params)
 
     if @song.save
-      redirect_to artists_path
+      redirect_to @artist, notice: "New Song Added!"
     else
-      render 'new'
+      render @artist.id, notice: "Song not Added, Please try again"
     end
 end
 
