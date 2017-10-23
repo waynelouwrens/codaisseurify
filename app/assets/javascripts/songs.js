@@ -1,33 +1,49 @@
 
 
 
-function addSongToArtist (title) {
-  var newSong = {title: title};
+function songSubmit () {
+  var inputField1 = document.getElementById('song_name');
+  var newSongName = inputField1.value;createSong(newSongName);
 
-    $.ajax({
-   type: "POST",
-   url: "/songs.json",
-   data: JSON.stringify({
-       song: newSong
-   }),
-   contentType: "application/json",
-   dataType: "json" })
-   .done(function(data) {
-   console.log(data);
+  var inputField2 = document.getElementById('song_album');
+  var newSongAlbum = inputField2.value;createSong(newSongAlbum);
 
-  var listItem = $("<li></li>")
-    .html(title);
+  var inputField3 = document.getElementById('song_year');
+  var newSongYear = inputField3.value;createSong(newSongYear);
 
-  $("#songList").append(listItem);
-  })
+  inputField1.value = null;
+  inputField2.value = null;
+  inputField3.value = null;
+}
 
-  .fail(function(error) {
-    console.log(error);
+function createSong() {
+  var listItem = document.createElement("li");
+  listItem.className = "Songs";
+  var paragraph1 = document.createElement("p");
+  paragraph1.innerHTML = newSongName;
+  listItem.appendChild(paragraph1);
+  var paragraph2 = document.createElement("p");
+  paragraph2.innerHTML = newSongAlbum;
+  listItem.appendChild(paragraph2);
+  var paragraph3 = document.createElement("p");
+  paragraph3.innerHTML = newSongYear;
+  listItem.appendChild(paragraph3);
 
-    error_message = error.responseJSON;
-    (error_message);
+  $.ajax({
+    type: "POST",
+    url: "/api/artists/id",
+    data: JSON.stringify({
+      song: newSong
+    }),
+    contentType: "application/json",
+    dataType: "json"})
 
-  });
+    .fail(function(error) {
+      console.log(error);
+
+      error_message = error.responseJSON.name[0];
+      showError(error_message);
+    });
 }
 
 function showError(message) {
@@ -39,19 +55,3 @@ function showError(message) {
     .addClass("has-error")
     .append(errorHelpBlock);
 }
-
-function resetErrors() {
-  $("#error_message").remove();
-  $("#formgroup-title").removeClass("has-error");
-}
-
-function submitSong(event) {
-  event.preventDefault
-  resetErrors();
-  createSong($("#song_name").val());
-  $("#song_name").val(null);
-}
-
-$(document).ready(function() {
-  $("form").bind('submit', submitSong);
-});

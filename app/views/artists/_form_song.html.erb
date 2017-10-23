@@ -17,6 +17,11 @@
   <div class="actions">
     <br>
       <%= f.submit (@song.new_record? ? "Add Song" : "Update") %>
+
+    <script>
+      <form onSubmit="submitTodo(); return false">
+    </script>
+
     <br>
   </div>
 <% end %>

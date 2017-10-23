@@ -34,6 +34,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @photos = @artist.photos
     @songs = @artist.songs
+    @song = Song.find(params[:id])
   end
 
   def update
@@ -53,9 +54,10 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist = Artist.find(params[:id])
-
+    @song = Song.find(params[:id])
+    @song.destroy
     @artist.destroy
-    redirect_to artists_path
+    redirect_to @artist
   end
 
 private
