@@ -63,7 +63,6 @@ end
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use jQuery for easier javascript
-gem 'jquery-rails', '~> 4.3.1'
 
 gem 'carrierwave', '0.11.2'
 
@@ -72,3 +71,5 @@ gem 'cloudinary', '1.2.3'
 gem 'rails_12factor', group: :production
 
 gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'jquery-rails'
