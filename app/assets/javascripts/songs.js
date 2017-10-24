@@ -2,32 +2,22 @@
 
 
 function songSubmit () {
-  var inputField1 = document.getElementById('song_name');
-  var newSongName = inputField1.value;createSong(newSongName);
+  document.getElementByClass("form-group").submit; //Form Submission
 
-  var inputField2 = document.getElementById('song_album');
-  var newSongAlbum = inputField2.value;createSong(newSongAlbum);
 
-  var inputField3 = document.getElementById('song_year');
-  var newSongYear = inputField3.value;createSong(newSongYear);
+  var song_name = document.getElementById('song_name').value;
+  var album_name = document.getElementById('song_album').value;
+  var song_year = document.getElementById('song_year').value;
+
+  if (song_name === '' || album_name ==='' || song_year === '') {
+    alert( Please fill in all the fields...)
+    return false;
+  }
 
   inputField1.value = null;
   inputField2.value = null;
   inputField3.value = null;
 }
-
-function createSong() {
-  var listItem = document.createElement("li");
-  listItem.className = "Songs";
-  var paragraph1 = document.createElement("p");
-  paragraph1.innerHTML = newSongName;
-  listItem.appendChild(paragraph1);
-  var paragraph2 = document.createElement("p");
-  paragraph2.innerHTML = newSongAlbum;
-  listItem.appendChild(paragraph2);
-  var paragraph3 = document.createElement("p");
-  paragraph3.innerHTML = newSongYear;
-  listItem.appendChild(paragraph3);
 
   $.ajax({
     type: "POST",

@@ -25,13 +25,17 @@ def create
   @artist = Artist.find(params[:artist_id])
   @song = @artist.songs.new(song_params)
 
-    #@song = Song.new(song_params)
-
+    respond_to do |format|
     if @song.save
-      redirect_to @artist, notice: "New Song Added!"
+      format.html {redirect_to @artist, notice: "New Song Added!"}
+      format.json {render :show, status: :created, location: @artist }
+      format.js
     else
-      render @artist.id, notice: "Song not Added, Please try again"
+      format.html {render @artist.id, notice: "Song not Added, Please try again"}
+      format.json {render json: @artist.errors, status: :unprocessable_entity }
+      format.js
     end
+  end
 end
 
   def update

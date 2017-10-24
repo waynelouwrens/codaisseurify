@@ -1,5 +1,5 @@
 
-<%= form_for [@artist, @song] do |f| %>
+<%= form_for [@artist, @song], remote:true do |f| %>
   <div class="form-group">
 
       <%= f.text_field :name, placeholder: "Song name", class: "form-control" %>
@@ -17,10 +17,6 @@
   <div class="actions">
     <br>
       <%= f.submit (@song.new_record? ? "Add Song" : "Update") %>
-
-    <script>
-      <form onSubmit="submitTodo(); return false">
-    </script>
 
     <br>
   </div>

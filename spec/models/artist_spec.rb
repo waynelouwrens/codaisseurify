@@ -10,11 +10,11 @@ RSpec.describe Artist, type: :model do
   let!(:song) { create :song, artist: artist }
 
   it "has many songs" do
-    balls = artist.songs.new(name: "Chocolate Salty Balls")
-    blue = artist.songs.new(name: "Blue")
+    song1 = artist.songs.new(name: "Yellow")
+    song2 = artist.songs.new(name: "Blue")
 
-    expect(artist.songs).to include(balls)
-    expect(artist.songs).to include(blue)
+    expect(artist.songs).to include("Yellow")
+    expect(artist.songs).to include("Blue")
   end
 
   it "deletes associated songs" do
