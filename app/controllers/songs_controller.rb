@@ -25,6 +25,7 @@ def create
   @artist = Artist.find(params[:artist_id])
   @song = @artist.songs.new(song_params)
 
+
     respond_to do |format|
     if @song.save
       format.html {redirect_to @artist, notice: "New Song Added!"}
